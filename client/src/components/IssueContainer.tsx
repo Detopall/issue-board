@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import jsonIssues from "../issues.json";
-import { IntIssue } from "../App";
+import { IntIssue, Status } from "../App";
 import Issue from "./Issue";
 import { allowDrop, drop } from "../utils/DragDrop";
 
@@ -15,32 +14,42 @@ function IssueContainer() {
 	);
 
 	useEffect(() => {
-		const containers: IssueContainer[] = [];
+		fetch("http://localhost:8000/issues")
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				const containers: IssueContainer[] = [];
 
-		jsonIssues.forEach((issue) => {
-			const containerIndex = containers.findIndex(
-				(container) => container.status === issue.status
-			);
+				data.forEach((issue: IntIssue) => {
+					const containerIndex = containers.findIndex(
+						(container) => container.status === issue.status
+					);
 
-			if (containerIndex !== -1) {
-				containers[containerIndex].issues.push(issue);
-			} else {
-				containers.push({ status: issue.status, issues: [issue] });
-			}
-		});
+					if (containerIndex !== -1) {
+						containers[containerIndex].issues.push(issue);
+					} else {
+						containers.push({
+							status: issue.status,
+							issues: [issue],
+						});
+					}
+				});
 
-		// Sort the issue containers based on the desired order
-		const orderedContainers = [
-			"open",
-			"in-progress",
-			"review",
-			"closed",
-		].map((status) => {
-			const container = containers.find((c) => c.status === status);
-			return container ? container : { status, issues: [] };
-		});
+				// Sort the issue containers based on the desired order
+				const orderedContainers = [
+					Status.OPEN,
+					Status.IN_PROGRESS,
+					Status.REVIEW,
+					Status.CLOSED,
+				].map((status) => {
+					const container = containers.find(
+						(c) => c.status === status
+					);
+					return container ? container : { status, issues: [] };
+				});
 
-		setIssueContainers(orderedContainers);
+				setIssueContainers(orderedContainers);
+			});
 	}, []);
 
 	return (

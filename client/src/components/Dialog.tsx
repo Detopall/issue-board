@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import DialogForm from "./DialogForm";
-import { Status } from "../App";
+import { Status, IntIssue } from "../App";
 
 interface DialogProps {
 	showButton: HTMLButtonElement | undefined;
@@ -32,8 +32,8 @@ function Dialog({ showButton }: DialogProps) {
 	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		const formData = new FormData(e.currentTarget);
-		const tags = Array.from(formData.getAll("tag"));
-		const assignees = Array.from(formData.getAll("assignee"));
+		const tags: string[] = Array.from(formData.getAll("tag")) as string[];
+		const assignees: string[] = Array.from(formData.getAll("assignee")) as string[];
 
 		if (tags.length === 0 || assignees.length === 0) {
 			alert("Please select at least one checkbox for each item");
@@ -45,7 +45,7 @@ function Dialog({ showButton }: DialogProps) {
 		const weight = parseInt(formData.get("weight") as string);
 		const dueDate = formData.get("due-date") as string;
 
-		console.log({
+		const data: IntIssue = {
 			title,
 			description,
 			tags,
@@ -53,7 +53,25 @@ function Dialog({ showButton }: DialogProps) {
 			weight,
 			dueDate,
 			status: Status.OPEN,
+			id: "temp id",
+		};
+
+		createIssueFetch(data);
+	}
+
+	async function createIssueFetch(data: IntIssue) {
+		const fetched = fetch("http://localhost:8000/issues", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(data),
 		});
+
+		const response = await fetched;
+		const json = await response.json();
+		console.log(json);
+		location.reload();
 	}
 
 	return (
