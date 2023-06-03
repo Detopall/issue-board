@@ -1,7 +1,6 @@
-import DialogIssueInfo from "./components/DialogIssueInfo";
-import DialogNewIssue from "./components/DialogNewIssue";
+import DialogNewIssue from "./components/dialog/DialogNewIssue";
 import IssueContainer from "./components/IssueContainer";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export enum Status {
 	OPEN = "open",

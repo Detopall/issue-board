@@ -163,7 +163,7 @@ li {
 	z-index: 9999;
 	position: fixed;
 	top: 50%;
-	left: 50%;
+	left: 25%;
 	transform: translate(-50%, -50%);
 }
 
