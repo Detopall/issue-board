@@ -1,4 +1,4 @@
-import { IntIssue } from "../App";
+import { IntIssue } from "../../App";
 import DialogInfoForm from "./DialogInfoForm";
 
 interface DialogInfoProps {

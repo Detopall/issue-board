@@ -3,7 +3,7 @@ import { IntIssue } from "../App";
 import { drag } from "../utils/DragDrop";
 import { faDumbbell, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import DialogIssueInfo from "./DialogIssueInfo";
+import DialogIssueInfo from "./dialog/DialogIssueInfo";
 
 function Issue({ issue }: { issue: IntIssue }) {
 	const [dialogOpen, setDialogOpen] = useState(false);

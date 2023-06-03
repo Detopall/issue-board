@@ -1,5 +1,5 @@
 import DialogForm from "./DialogForm";
-import { Status, IntIssue } from "../App";
+import { Status, IntIssue } from "../../App";
 
 interface DialogProps {
 	dialogOpen: boolean;

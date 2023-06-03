@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { IntIssue } from "../App";
+import { IntIssue } from "../../App";
 
 interface DialogFormInfo {
 	issueInfo: (() => Promise<IntIssue>) | null;
