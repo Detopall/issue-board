@@ -6,7 +6,7 @@ interface DialogProps {
 	handleCloseDialog: () => void;
 }
 
-function Dialog({ dialogOpen, handleCloseDialog }: DialogProps) {
+function DialogNewIssue({ dialogOpen, handleCloseDialog }: DialogProps) {
 
 	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
@@ -77,4 +77,4 @@ function Dialog({ dialogOpen, handleCloseDialog }: DialogProps) {
 	);
 }
 
-export default Dialog;
+export default DialogNewIssue;

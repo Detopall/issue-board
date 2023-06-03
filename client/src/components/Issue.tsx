@@ -2,8 +2,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IntIssue } from "../App";
 import { drag } from "../utils/DragDrop";
 import { faDumbbell, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
+import DialogIssueInfo from "./DialogIssueInfo";
 
 function Issue({ issue }: { issue: IntIssue }) {
+	const [dialogOpen, setDialogOpen] = useState(false);
+
+	const handleShowDialog = () => {
+		setDialogOpen(true);
+	};
+
+	const handleCloseDialog = () => {
+		setDialogOpen(false);
+	};
+
 	function daysRemaining(date: string): string {
 		const today = new Date();
 		const dueDate = new Date(date);
@@ -28,30 +40,42 @@ function Issue({ issue }: { issue: IntIssue }) {
 	}
 
 	return (
-		<div className="issue" draggable onDragStart={drag} id={issue.id}>
-			<h1>{issue.title}</h1>
-			<div className="tags">
-				{issue.tags.map((tag, index) => (
-					<span className="tag" key={index}>
-						{tag}
-					</span>
-				))}
+		<>
+			<div
+				className="issue"
+				draggable
+				onDragStart={drag}
+				id={issue.id}
+				onClick={handleShowDialog}
+			>
+				<h1>{issue.title}</h1>
+				<div className="tags">
+					{issue.tags.map((tag, index) => (
+						<span className="tag" key={index}>
+							{tag}
+						</span>
+					))}
+				</div>
+				<div className="issue-delete-icon" onClick={deleteIssue}>
+					<FontAwesomeIcon icon={faTrashCan} />
+				</div>
+				<div className="assignees">
+					{issue.assignees.map((assignee, index) => (
+						<span className="assignee" key={index}>
+							{assignee}
+						</span>
+					))}
+				</div>
+				<span className="weight">
+					<FontAwesomeIcon icon={faDumbbell} /> {issue.weight}
+				</span>
+				<span className="due-date">{daysRemaining(issue.dueDate)}</span>
 			</div>
-			<div className="issue-delete-icon" onClick={deleteIssue}>
-				<FontAwesomeIcon icon={faTrashCan} />
-			</div>
-			<div className="assignees">
-				{issue.assignees.map((assignee, index) => (
-					<span className="assignee" key={index}>
-						{assignee}
-					</span>
-				))}
-			</div>
-			<span className="weight">
-				<FontAwesomeIcon icon={faDumbbell} /> {issue.weight}
-			</span>
-			<span className="due-date">{daysRemaining(issue.dueDate)}</span>
-		</div>
+			<DialogIssueInfo
+				dialogOpen={dialogOpen}
+				handleCloseDialog={handleCloseDialog}
+			/>
+		</>
 	);
 }
 

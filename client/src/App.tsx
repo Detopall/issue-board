@@ -1,4 +1,5 @@
-import Dialog from "./components/Dialog";
+import DialogIssueInfo from "./components/DialogIssueInfo";
+import DialogNewIssue from "./components/DialogNewIssue";
 import IssueContainer from "./components/IssueContainer";
 import { useEffect, useState } from "react";
 
@@ -31,13 +32,7 @@ export interface IntIssue {
 
 function App() {
 	const [dialogOpen, setDialogOpen] = useState(false);
-	const showButton = document.querySelector("#show-dialog");
 
-	useEffect(() => {
-		if (showButton) {
-			showButton.addEventListener("click", handleShowDialog);
-		}
-	}, [showButton]);
 
 	async function handleDragEnd() {
 		const issueId =
@@ -79,7 +74,7 @@ function App() {
 				>
 					New Issue
 				</button>
-				<Dialog
+				<DialogNewIssue
 					dialogOpen={dialogOpen}
 					handleCloseDialog={handleCloseDialog}
 				/>
