@@ -1,51 +1,5 @@
 [
     {
-        "id": "d047386b-5f2e-432f-9d21-cb3de8cd3ee4",
-        "title": "Implement user authentication",
-        "description": "Add user authentication functionality to the application.",
-        "weight": 3,
-        "assignees": [
-            "John Doe",
-            "Jane Smith"
-        ],
-        "dueDate": "2023-06-04",
-        "tags": [
-            "feature",
-            "documentation"
-        ],
-        "status": "open"
-    },
-    {
-        "id": "813a54cf-957b-442d-99ae-0594859e3641",
-        "title": "Refactor codebase",
-        "description": "Refactor existing code to improve maintainability and readability.",
-        "weight": 2,
-        "assignees": [
-            "Alice Johnson"
-        ],
-        "dueDate": "2023-06-30",
-        "tags": [
-            "bug-fix",
-            "refactor"
-        ],
-        "status": "in-progress"
-    },
-    {
-        "title": "Implement drag and drop feature",
-        "description": "Add drag and drop functionality for moving issues between different status columns.",
-        "tags": [
-            "question",
-            "feature"
-        ],
-        "assignees": [
-            "Bob Anderson"
-        ],
-        "weight": 6,
-        "dueDate": "2023-06-21",
-        "status": "review",
-        "id": "c486fcd1-5983-4ad8-bd1c-df4ca66bbb64"
-    },
-    {
         "id": "193a8d08-2484-4e35-a98d-684007fe6eff",
         "title": "Api check",
         "description": "This is the description of the api check",
@@ -59,5 +13,37 @@
             "documentation"
         ],
         "status": "closed"
+    },
+    {
+        "id": "bbfc67d3-617c-4f9d-a4a7-56fcb0225201",
+        "title": "New Button Homepage",
+        "description": "Need to add a new button on the homepage that does this and that",
+        "weight": 5,
+        "assignees": [
+            "Denis",
+            "Simon",
+            "Bert"
+        ],
+        "dueDate": "2023-06-13",
+        "tags": [
+            "feature",
+            "help wanted"
+        ],
+        "status": "open"
+    },
+    {
+        "id": "ee781633-32cc-4c12-add0-2cd742072433",
+        "title": "Refactor bad code",
+        "description": "Simon created some bad code and now Denis and Kevin will refactor it.",
+        "weight": 6,
+        "assignees": [
+            "Denis",
+            "Kevin"
+        ],
+        "dueDate": "2023-06-13",
+        "tags": [
+            "feature"
+        ],
+        "status": "in-progress"
     }
 ]

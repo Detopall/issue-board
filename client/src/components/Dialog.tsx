@@ -1,39 +1,20 @@
-import { useEffect, useState } from "react";
 import DialogForm from "./DialogForm";
 import { Status, IntIssue } from "../App";
 
 interface DialogProps {
-	showButton: HTMLButtonElement | undefined;
+	dialogOpen: boolean;
+	handleCloseDialog: () => void;
 }
 
-function Dialog({ showButton }: DialogProps) {
-	const [dialogOpen, setDialogOpen] = useState(false);
-
-	useEffect(() => {
-		if (showButton) {
-			showButton.addEventListener("click", handleShowDialog);
-		}
-
-		return () => {
-			if (showButton) {
-				showButton.removeEventListener("click", handleShowDialog);
-			}
-		};
-	}, [showButton]);
-
-	const handleShowDialog = () => {
-		setDialogOpen(true);
-	};
-
-	const handleCloseDialog = () => {
-		setDialogOpen(false);
-	};
+function Dialog({ dialogOpen, handleCloseDialog }: DialogProps) {
 
 	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		const formData = new FormData(e.currentTarget);
 		const tags: string[] = Array.from(formData.getAll("tag")) as string[];
-		const assignees: string[] = Array.from(formData.getAll("assignee")) as string[];
+		const assignees: string[] = Array.from(
+			formData.getAll("assignee")
+		) as string[];
 
 		if (tags.length === 0 || assignees.length === 0) {
 			alert("Please select at least one checkbox for each item");

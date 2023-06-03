@@ -10,12 +10,21 @@ function Issue({ issue }: { issue: IntIssue }) {
 		const diff = dueDate.getTime() - today.getTime();
 		const days = parseInt((diff / (1000 * 3600 * 24)).toString());
 		const daysText = days > 1 ? "days" : "day";
-		console.log(days);
 		return days > 0
 			? `${Math.round(days).toString()} ${daysText} remaining`
 			: days === 0
 			? "Today"
 			: "Overdue";
+	}
+
+	async function deleteIssue(e: React.MouseEvent<HTMLDivElement>) {
+		const issueId = e.currentTarget.parentElement?.id;
+		if (issueId) {
+			await fetch(`http://localhost:8000/issues/${issueId}`, {
+				method: "DELETE",
+			});
+			location.reload();
+		}
 	}
 
 	return (
@@ -28,7 +37,7 @@ function Issue({ issue }: { issue: IntIssue }) {
 					</span>
 				))}
 			</div>
-			<div className="issue-delete-icon">
+			<div className="issue-delete-icon" onClick={deleteIssue}>
 				<FontAwesomeIcon icon={faTrashCan} />
 			</div>
 			<div className="assignees">

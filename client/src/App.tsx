@@ -1,5 +1,6 @@
 import Dialog from "./components/Dialog";
 import IssueContainer from "./components/IssueContainer";
+import { useEffect, useState } from "react";
 
 export enum Status {
 	OPEN = "open",
@@ -29,15 +30,26 @@ export interface IntIssue {
 }
 
 function App() {
+	const [dialogOpen, setDialogOpen] = useState(false);
+	const showButton = document.querySelector("#show-dialog");
+
+	useEffect(() => {
+		if (showButton) {
+			showButton.addEventListener("click", handleShowDialog);
+		}
+	}, [showButton]);
+
 	async function handleDragEnd() {
 		const issueId =
 			document.querySelector("#App")?.getAttribute("data-issue-id") ?? "";
-		const draggedTo = document.querySelector("#App")?.getAttribute("data-dragged-to") ?? "";
+		const draggedTo =
+			document.querySelector("#App")?.getAttribute("data-dragged-to") ??
+			"";
 
 		const oneIssue = await fetch(`http://localhost:8000/issues/${issueId}`);
 		const json = await oneIssue.json();
 		json.status = draggedTo;
-		
+
 		await fetch(`http://localhost:8000/issues/${issueId}`, {
 			method: "PUT",
 			headers: {
@@ -49,26 +61,28 @@ function App() {
 		location.reload();
 	}
 
-	function showDialog(e: React.MouseEvent<HTMLButtonElement>) {
-		console.log("modal show");
-	}
+	const handleShowDialog = () => {
+		setDialogOpen(true);
+	};
 
-	function getButtonElement(id: string): HTMLButtonElement | undefined {
-		const button = document.querySelector(`#${id}`);
-		return (button as HTMLButtonElement) || undefined;
-	}
+	const handleCloseDialog = () => {
+		setDialogOpen(false);
+	};
 
 	return (
 		<>
 			<div id="App" onDragEnd={handleDragEnd}>
 				<button
 					id="show-dialog"
-					onClick={showDialog}
+					onClick={handleShowDialog}
 					className="new-issue-button"
 				>
 					New Issue
 				</button>
-				<Dialog showButton={getButtonElement("show-dialog")} />
+				<Dialog
+					dialogOpen={dialogOpen}
+					handleCloseDialog={handleCloseDialog}
+				/>
 				<IssueContainer />
 			</div>
 		</>

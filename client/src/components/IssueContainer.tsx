@@ -17,7 +17,6 @@ function IssueContainer() {
 		fetch("http://localhost:8000/issues")
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
 				const containers: IssueContainer[] = [];
 
 				data.forEach((issue: IntIssue) => {
