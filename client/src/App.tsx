@@ -29,8 +29,24 @@ export interface IntIssue {
 }
 
 function App() {
-	function handleDragEnd() {
-		console.log("Dragging stopped");
+	async function handleDragEnd() {
+		const issueId =
+			document.querySelector("#App")?.getAttribute("data-issue-id") ?? "";
+		const draggedTo = document.querySelector("#App")?.getAttribute("data-dragged-to") ?? "";
+
+		const oneIssue = await fetch(`http://localhost:8000/issues/${issueId}`);
+		const json = await oneIssue.json();
+		json.status = draggedTo;
+		
+		await fetch(`http://localhost:8000/issues/${issueId}`, {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(json),
+		});
+
+		location.reload();
 	}
 
 	function showDialog(e: React.MouseEvent<HTMLButtonElement>) {

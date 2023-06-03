@@ -59,7 +59,7 @@ function IssueContainer() {
 					className="issue-container"
 					onDrop={drop}
 					onDragOver={allowDrop}
-					data-container={index}
+					data-container={container.status}
 					key={index}
 				>
 					<h2>{container.status}</h2>

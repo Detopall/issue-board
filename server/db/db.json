@@ -1,34 +1,34 @@
 [
     {
+        "id": "d047386b-5f2e-432f-9d21-cb3de8cd3ee4",
         "title": "Implement user authentication",
         "description": "Add user authentication functionality to the application.",
-        "tags": [
-            "feature",
-            "documentation"
-        ],
+        "weight": 3,
         "assignees": [
             "John Doe",
             "Jane Smith"
         ],
-        "weight": 3,
         "dueDate": "2023-06-04",
-        "status": "in-progress",
-        "id": "d047386b-5f2e-432f-9d21-cb3de8cd3ee4"
+        "tags": [
+            "feature",
+            "documentation"
+        ],
+        "status": "open"
     },
     {
+        "id": "813a54cf-957b-442d-99ae-0594859e3641",
         "title": "Refactor codebase",
         "description": "Refactor existing code to improve maintainability and readability.",
+        "weight": 2,
+        "assignees": [
+            "Alice Johnson"
+        ],
+        "dueDate": "2023-06-30",
         "tags": [
             "bug-fix",
             "refactor"
         ],
-        "assignees": [
-            "Alice Johnson"
-        ],
-        "weight": 2,
-        "dueDate": "2023-06-30",
-        "status": "closed",
-        "id": "813a54cf-957b-442d-99ae-0594859e3641"
+        "status": "in-progress"
     },
     {
         "title": "Implement drag and drop feature",
@@ -58,6 +58,6 @@
             "bug-fix",
             "documentation"
         ],
-        "status": "open"
+        "status": "closed"
     }
 ]

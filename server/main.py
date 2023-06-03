@@ -38,6 +38,15 @@ def create_issue(issue: Issue):
     save_data(data)
     return issue
 
+@app.get("/issues/{id}")
+def get_issue(id: str):
+	data = load_data()
+	for issue in data:
+		if issue['id'] == id:
+			return issue
+	return None
+
+
 @app.put("/issues/{id}")
 def update_issue(id: str, issue: Issue):
     data = load_data()

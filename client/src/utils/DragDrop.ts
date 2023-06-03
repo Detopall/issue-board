@@ -8,11 +8,18 @@ export function drag(e: React.DragEvent<HTMLDivElement>) {
 
 export function drop(e: React.DragEvent<HTMLDivElement>) {
 	e.preventDefault();
-	const data = e.dataTransfer?.getData("text") || "";
-	const draggedElement = document.getElementById(data);
+	const issueId = e.dataTransfer?.getData("text") ?? "";
+	console.log(issueId);
+	const draggedElement = document.getElementById(issueId);
 	const targetElement = (e.target as HTMLElement).closest(".issue-container");
-
+	
 	if (!draggedElement || !targetElement) return;
+	const targetAttribute = targetElement.getAttribute("data-container");
+	if (!targetAttribute) return;
+	const app = document.getElementById("App");
+	if (!app) return;
 
+	app.setAttribute("data-issue-id", issueId);
+	app.setAttribute("data-dragged-to", targetAttribute);
 	targetElement.appendChild(draggedElement);
 }

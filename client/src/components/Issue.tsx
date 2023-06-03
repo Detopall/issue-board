@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IntIssue } from "../App";
 import { drag } from "../utils/DragDrop";
-import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
+import { faDumbbell, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 function Issue({ issue }: { issue: IntIssue }) {
 	function daysRemaining(date: string): string {
@@ -27,6 +27,9 @@ function Issue({ issue }: { issue: IntIssue }) {
 						{tag}
 					</span>
 				))}
+			</div>
+			<div className="issue-delete-icon">
+				<FontAwesomeIcon icon={faTrashCan} />
 			</div>
 			<div className="assignees">
 				{issue.assignees.map((assignee, index) => (
