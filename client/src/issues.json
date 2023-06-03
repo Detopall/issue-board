@@ -1,0 +1,52 @@
+[
+	{
+		"title": "Implement user authentication",
+		"description": "Add user authentication functionality to the application.",
+		"tags": ["feature", "documentation"],
+		"assignees": ["John Doe", "Jane Smith"],
+		"weight": 3,
+		"dueDate": "2023-06-04",
+		"status": "in-progress",
+		"id": "MDAE-5241-DZEA"
+	},
+	{
+		"title": "Refactor codebase",
+		"description": "Refactor existing code to improve maintainability and readability.",
+		"tags": ["bug-fix", "refactor"],
+		"assignees": ["Alice Johnson"],
+		"weight": 2,
+		"dueDate": "2023-06-30",
+		"status": "closed",
+		"id": "MDAE-5242-DZEA"
+	},
+	{
+		"title": "Implement drag and drop feature",
+		"description": "Add drag and drop functionality for moving issues between different status columns.",
+		"tags": ["question", "feature"],
+		"assignees": ["Bob Anderson"],
+		"weight": 2,
+		"dueDate": "2023-06-20",
+		"status": "open",
+		"id": "MDAE-5243-DZEA"
+	},
+	{
+		"title": "Implement drag and drop feature",
+		"description": "Add drag and drop functionality for moving issues between different status columns.",
+		"tags": ["question", "feature"],
+		"assignees": ["Bob Anderson"],
+		"weight": 6,
+		"dueDate": "2023-06-21",
+		"status": "review",
+		"id": "MDAE-5244-DZEA"
+	},
+	{
+		"title": "This is the title",
+		"description": "This is the description",
+		"tags": ["documentation"],
+		"assignees": ["Denis", "Simon"],
+		"weight": 6,
+		"dueDate": "2023-06-14",
+		"status": "open",
+		"id": "MDAE-5245-DZEA"
+	}
+]
