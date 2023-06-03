@@ -74,6 +74,7 @@ function Issue({ issue }: { issue: IntIssue }) {
 			<DialogIssueInfo
 				dialogOpen={dialogOpen}
 				handleCloseDialog={handleCloseDialog}
+				issueId={issue.id}
 			/>
 		</>
 	);
