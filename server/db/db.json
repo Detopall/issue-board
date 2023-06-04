@@ -1,19 +1,81 @@
 [
     {
-        "id": "1c0a5e8e-7be5-4cbb-b06d-4c469c997b08",
-        "title": "new button on login page",
-        "description": "this new button will do this and that in the login page, need refactoring also",
+        "id": "d1a77947-2e74-423a-bbab-05a8a09d4397",
+        "title": "Refactoring the documentation",
+        "description": "I will be refactoring the documentation.",
+        "weight": 4,
+        "assignees": [
+            "DENIS"
+        ],
+        "dueDate": "2023-07-03",
+        "tags": [
+            "DOCUMENTATION",
+            "REFACTOR"
+        ],
+        "status": "closed"
+    },
+    {
+        "id": "641e6e20-6728-43f5-81e0-9999154cb4fb",
+        "title": "Add new button",
+        "description": "This new button needs to be added in the homepage",
+        "weight": 4,
+        "assignees": [
+            "SIMON",
+            "KEVIN"
+        ],
+        "dueDate": "2023-06-21",
+        "tags": [
+            "FEATURE"
+        ],
+        "status": "in-progress"
+    },
+    {
+        "id": "6a52b7e5-b70f-4c84-b61c-2584c64e26d1",
+        "title": "Bug fix on homepage",
+        "description": "This issue will refactor the bug on the homepage",
         "weight": 8,
         "assignees": [
             "DENIS",
-            "KEVIN"
+            "SIMON"
+        ],
+        "dueDate": "2023-06-04",
+        "tags": [
+            "BUG_FIX",
+            "HELP_WANTED",
+            "REFACTOR"
+        ],
+        "status": "review"
+    },
+    {
+        "id": "5fab2071-2108-4ea2-b20f-8dc7fbcb945b",
+        "title": "Final review for the login page",
+        "description": "Need a final review for the login page.",
+        "weight": 4,
+        "assignees": [
+            "DENIS",
+            "SIMON"
+        ],
+        "dueDate": "2023-06-05",
+        "tags": [
+            "QUESTION",
+            "HELP_WANTED"
+        ],
+        "status": "review"
+    },
+    {
+        "id": "7dd3f04f-b6dd-40cc-813b-77ed9bb5360a",
+        "title": "Add user authentication",
+        "description": "Add user auth to the login and register page",
+        "weight": 7,
+        "assignees": [
+            "DENIS",
+            "BERT"
         ],
         "dueDate": "2023-06-08",
         "tags": [
             "FEATURE",
-            "HELP_WANTED",
-            "REFACTOR"
+            "HELP_WANTED"
         ],
-        "status": "in-progress"
+        "status": "open"
     }
 ]
