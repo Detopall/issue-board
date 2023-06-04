@@ -1,3 +1,6 @@
+import { Assignees } from "../../App";
+import { Tags } from "../../App";
+
 interface DialogFormProps {
 	handleCloseDialog: () => void;
 	handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -26,64 +29,30 @@ function DialogForm({ handleCloseDialog, handleSubmit }: DialogFormProps) {
 
 				<label>Tags</label>
 				<div id="tags">
-					<label>
-						<input type="checkbox" name="tag" value="bug-fix" />
-						bug-fix
-					</label>
-					<label>
-						<input
-							type="checkbox"
-							name="tag"
-							value="feature"
-							defaultChecked
-						/>
-						feature
-					</label>
-					<label>
-						<input
-							type="checkbox"
-							name="tag"
-							value="documentation"
-						/>
-						documentation
-					</label>
-					<label>
-						<input type="checkbox" name="tag" value="question" />
-						question
-					</label>
-					<label>
-						<input type="checkbox" name="tag" value="help wanted" />
-						help wanted
-					</label>
-					<label>
-						<input type="checkbox" name="tag" value="refactor" />
-						refactor
-					</label>
+					{(Object.keys(Tags) as Array<keyof typeof Tags>).map(
+						(tag: string) => (
+							<label key={tag}>
+								<input type="checkbox" name="tag" value={tag} />
+								{tag}
+							</label>
+						)
+					)}
 				</div>
 
 				<label htmlFor="assignees">Assignees</label>
 				<div id="assignees">
-					<label>
-						<input
-							type="checkbox"
-							name="assignee"
-							value="Denis"
-							defaultChecked
-						/>
-						Denis
-					</label>
-					<label>
-						<input type="checkbox" name="assignee" value="Kevin" />
-						Kevin
-					</label>
-					<label>
-						<input type="checkbox" name="assignee" value="Simon" />
-						Simon
-					</label>
-					<label>
-						<input type="checkbox" name="assignee" value="Bert" />
-						Bert
-					</label>
+					{(
+						Object.keys(Assignees) as Array<keyof typeof Assignees>
+					).map((assignee: string) => (
+						<label key={assignee}>
+							<input
+								type="checkbox"
+								name="assignee"
+								value={assignee}
+							/>
+							{assignee}
+						</label>
+					))}
 				</div>
 
 				<label htmlFor="weight">Weight</label>

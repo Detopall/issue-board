@@ -9,20 +9,26 @@ export enum Status {
 	REVIEW = "review",
 }
 
-export type Tags =
-	| "bug-fix"
-	| "feature"
-	| "documentation"
-	| "question"
-	| "help wanted"
-	| "refactor"
-	| string;
+export enum Assignees {
+	DENIS = "Denis",
+	SIMON = "Simon",
+	KEVIN = "Kevin",
+	BERT = "Bert"
+}
 
+export enum Tags {
+	BUG_FIX = "bug-fix",
+	FEATURE = "feature",
+	DOCUMENTATION = "documentation",
+	QUESTION = "question",
+	HELP_WANTED = "help wanted",
+	REFACTOR = "refactor"
+}
 export interface IntIssue {
 	title: string;
 	description: string;
 	tags: Tags[];
-	assignees: string[];
+	assignees: Assignees[];
 	weight: number;
 	dueDate: string;
 	status: Status | string;

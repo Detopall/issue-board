@@ -1,5 +1,5 @@
 import DialogForm from "./DialogForm";
-import { Status, IntIssue } from "../../App";
+import { Status, IntIssue, Tags, Assignees } from "../../App";
 
 interface DialogProps {
 	dialogOpen: boolean;
@@ -11,10 +11,8 @@ function DialogNewIssue({ dialogOpen, handleCloseDialog }: DialogProps) {
 	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		const formData = new FormData(e.currentTarget);
-		const tags: string[] = Array.from(formData.getAll("tag")) as string[];
-		const assignees: string[] = Array.from(
-			formData.getAll("assignee")
-		) as string[];
+		const tags: Tags[] = Array.from(formData.getAll("tag")) as Tags[];
+		const assignees: Assignees[] = Array.from(formData.getAll("assignee")) as Assignees[];
 
 		if (tags.length === 0 || assignees.length === 0) {
 			alert("Please select at least one checkbox for each item");
@@ -50,8 +48,7 @@ function DialogNewIssue({ dialogOpen, handleCloseDialog }: DialogProps) {
 		});
 
 		const response = await fetched;
-		const json = await response.json();
-		console.log(json);
+		await response.json();
 		location.reload();
 	}
 

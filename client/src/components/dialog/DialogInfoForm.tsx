@@ -25,8 +25,6 @@ function DialogInfoForm({ issueInfo }: DialogFormInfo) {
 		}
 	}, [issueInfo]);
 
-	console.log(issue);
-
 	return (
 		<>
 			<form className="issue-info-form">

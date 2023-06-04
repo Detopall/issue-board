@@ -1,15 +1,23 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IntIssue } from "../App";
 import { drag } from "../utils/DragDrop";
-import { faDumbbell, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import {
+	faDumbbell,
+	faEdit,
+	faTrashCan,
+} from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import DialogIssueInfo from "./dialog/DialogIssueInfo";
+import DialogIssue from "./dialog/DialogIssue";
 
 function Issue({ issue }: { issue: IntIssue }) {
 	const [dialogOpen, setDialogOpen] = useState(false);
+	const [editMode, setEditMode] = useState(false);
 
-	const handleShowDialog = () => {
+	const handleShowDialog = (editable: boolean, e: React.MouseEvent) => {
+		e.stopPropagation(); // to prevent the modal of the parent from opening
+
 		setDialogOpen(true);
+		setEditMode(editable);
 	};
 
 	const handleCloseDialog = () => {
@@ -30,6 +38,8 @@ function Issue({ issue }: { issue: IntIssue }) {
 	}
 
 	async function deleteIssue(e: React.MouseEvent<HTMLDivElement>) {
+		e.stopPropagation(); // to prevent the modal of the parent from opening
+		
 		const issueId = e.currentTarget.parentElement?.id;
 		if (issueId) {
 			await fetch(`http://localhost:8000/issues/${issueId}`, {
@@ -46,7 +56,7 @@ function Issue({ issue }: { issue: IntIssue }) {
 				draggable
 				onDragStart={drag}
 				id={issue.id}
-				onClick={handleShowDialog}
+				onClick={(e) => handleShowDialog(false, e)}
 			>
 				<h1>{issue.title}</h1>
 				<div className="tags">
@@ -58,6 +68,9 @@ function Issue({ issue }: { issue: IntIssue }) {
 				</div>
 				<div className="issue-delete-icon" onClick={deleteIssue}>
 					<FontAwesomeIcon icon={faTrashCan} />
+				</div>
+				<div className="issue-edit-icon" onClick={(e) => handleShowDialog(true, e)}>
+					<FontAwesomeIcon icon={faEdit} />
 				</div>
 				<div className="assignees">
 					{issue.assignees.map((assignee, index) => (
@@ -71,10 +84,12 @@ function Issue({ issue }: { issue: IntIssue }) {
 				</span>
 				<span className="due-date">{daysRemaining(issue.dueDate)}</span>
 			</div>
-			<DialogIssueInfo
+
+			<DialogIssue
 				dialogOpen={dialogOpen}
 				handleCloseDialog={handleCloseDialog}
 				issueId={issue.id}
+				editable={editMode}
 			/>
 		</>
 	);

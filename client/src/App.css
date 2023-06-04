@@ -58,7 +58,7 @@ li {
 .issue h1 {
 	font-size: 1rem;
 	font-weight: bold;
-	margin-top: 0;
+	margin-top: 2rem;
 	margin-bottom: 0.5rem;
 }
 
@@ -71,6 +71,23 @@ li {
 	top: 0.5rem;
 	right: 0.5rem;
 	font-size: 1.1rem;
+	padding: 0.25rem;
+	background-color: rgba(0, 0, 0, 0.1);
+	border-radius: 0.5rem;
+}
+
+.issue .issue-edit-icon {
+	position: absolute;
+	top: 0.5rem;
+	right: 2.5rem;
+	font-size: 1.1rem;
+	padding: 0.25rem;
+	background-color: rgba(0, 0, 0, 0.1);
+	border-radius: 0.5rem;
+}
+
+.issue .issue-edit-icon:hover, .issue .issue-delete-icon:hover {
+	background-color: rgba(0, 0, 0, 0.2);
 }
 
 .tags {

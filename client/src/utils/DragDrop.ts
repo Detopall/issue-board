@@ -9,7 +9,6 @@ export function drag(e: React.DragEvent<HTMLDivElement>) {
 export function drop(e: React.DragEvent<HTMLDivElement>) {
 	e.preventDefault();
 	const issueId = e.dataTransfer?.getData("text") ?? "";
-	console.log(issueId);
 	const draggedElement = document.getElementById(issueId);
 	const targetElement = (e.target as HTMLElement).closest(".issue-container");
 	

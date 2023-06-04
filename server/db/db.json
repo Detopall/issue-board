@@ -1,48 +1,18 @@
 [
     {
-        "id": "193a8d08-2484-4e35-a98d-684007fe6eff",
-        "title": "Api check",
-        "description": "This is the description of the api check",
-        "weight": 5,
+        "id": "1c0a5e8e-7be5-4cbb-b06d-4c469c997b08",
+        "title": "new button on login page",
+        "description": "this new button will do this and that in the login page, need refactoring also",
+        "weight": 8,
         "assignees": [
-            "Denis"
+            "DENIS",
+            "KEVIN"
         ],
-        "dueDate": "2023-06-13",
+        "dueDate": "2023-06-08",
         "tags": [
-            "bug-fix",
-            "documentation"
-        ],
-        "status": "closed"
-    },
-    {
-        "id": "bbfc67d3-617c-4f9d-a4a7-56fcb0225201",
-        "title": "New Button Homepage",
-        "description": "Need to add a new button on the homepage that does this and that",
-        "weight": 5,
-        "assignees": [
-            "Denis",
-            "Simon",
-            "Bert"
-        ],
-        "dueDate": "2023-06-13",
-        "tags": [
-            "feature",
-            "help wanted"
-        ],
-        "status": "review"
-    },
-    {
-        "id": "ee781633-32cc-4c12-add0-2cd742072433",
-        "title": "Refactor bad code",
-        "description": "Simon created some bad code and now Denis and Kevin will refactor it.",
-        "weight": 6,
-        "assignees": [
-            "Denis",
-            "Kevin"
-        ],
-        "dueDate": "2023-06-13",
-        "tags": [
-            "feature"
+            "FEATURE",
+            "HELP_WANTED",
+            "REFACTOR"
         ],
         "status": "in-progress"
     }

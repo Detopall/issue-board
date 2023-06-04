@@ -1,13 +1,15 @@
 import { IntIssue } from "../../App";
 import DialogInfoForm from "./DialogInfoForm";
+import DialogEditForm from "./DialogEditForm";
 
-interface DialogInfoProps {
+interface DialogIssueProps {
 	dialogOpen: boolean;
 	handleCloseDialog: () => void;
 	issueId: string;
+	editable: boolean;
 }
 
-function DialogIssueInfo({ dialogOpen, handleCloseDialog, issueId }: DialogInfoProps) {
+function DialogIssue({ dialogOpen, handleCloseDialog, issueId, editable }: DialogIssueProps) {
 
 	async function getOneIssue(){
 		const oneIssue = await fetch(`http://localhost:8000/issues/${issueId}`);
@@ -26,7 +28,8 @@ function DialogIssueInfo({ dialogOpen, handleCloseDialog, issueId }: DialogInfoP
 				className={dialogOpen ? "open" : ""}
 				open={dialogOpen}
 			>
-				<DialogInfoForm issueInfo={dialogOpen ? getOneIssue : null}/>
+				{(dialogOpen && !editable) ? <DialogInfoForm issueInfo={getOneIssue}/> : null}
+				{(dialogOpen && editable) ? <DialogEditForm issueInfo={getOneIssue} handleCloseDialog={handleCloseDialog}/> : null}
 			</dialog>
 
 			<output></output>
@@ -34,4 +37,4 @@ function DialogIssueInfo({ dialogOpen, handleCloseDialog, issueId }: DialogInfoP
 	);
 }
 
-export default DialogIssueInfo;
+export default DialogIssue;
